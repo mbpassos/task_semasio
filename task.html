@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Task Semasio</title>
+    <style>
+      body {
+        font-family: 'Roboto Mono', monospace;
+      }
+    </style>    
+</head>
+<body>
+
+  <h1>Task Semasio</h1>
+  <p>Given an array of integers, find the maximum product between two numbers from the array, that is a multiple of 3:</p>
+  <h3>Current array:</h3>
+  <p id="arrDisplay"></p>
+  <h3>Maximum product:</h3>
+  <p id="result"></p>
+
+    <script>
+
+      arr = [5,2,1,6,-9,-11];      
+      let n = arr.length;
+
+      function findProduct(arr, n) {        
+        
+        if (n < 2) {
+          document.write("No pairs exists, so it's not possible to multiply two numbers.");
+          return;
+        }
+
+        let maxProduct = 0;
+
+        for(let i = 0; i < arr.length - 1; i++) {    
+          
+          for(let j = i + 1; j < arr.length; j++) {
+            let product = arr[i] * arr[j]
+
+            if(product % 3 !== 0) continue;
+            
+            if(product > maxProduct) {
+              maxProduct = product
+            }
+          }
+        }
+
+        if (maxProduct == 0) {
+
+          document.write("Its not possible to have a product multiple of 3")
+          return;
+
+        } else console.log(maxProduct)
+          return maxProduct
+      }
+
+      document.getElementById("arrDisplay").innerHTML = arr;
+      document.getElementById("result").innerHTML = findProduct(arr, n);
+
+    </script>
+</body>
+</html>
